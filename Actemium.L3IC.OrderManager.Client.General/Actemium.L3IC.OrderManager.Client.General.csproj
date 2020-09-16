@@ -1,0 +1,618 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>8.0.30703</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{22DEFDD4-0512-4D83-8EF5-C0EC6C6D3C95}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>Actemium.L3IC.OrderManager.Client.General</RootNamespace>
+    <AssemblyName>Actemium.L3IC.OrderManager.Client.General</AssemblyName>
+    <TargetFrameworkVersion>v4.7</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <SccProjectName>SAK</SccProjectName>
+    <SccLocalPath>SAK</SccLocalPath>
+    <SccAuxPath>SAK</SccAuxPath>
+    <SccProvider>SAK</SccProvider>
+    <TargetFrameworkProfile />
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>TRACE;DEBUG;ACTVEGHEL</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <Prefer32Bit>false</Prefer32Bit>
+    <CodeAnalysisRuleSet>D:\TFS\Actemium Preferred Rules.ruleset</CodeAnalysisRuleSet>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <PlatformTarget>x86</PlatformTarget>
+    <Prefer32Bit>false</Prefer32Bit>
+    <CodeAnalysisRuleSet>D:\TFS\Actemium Preferred Rules.ruleset</CodeAnalysisRuleSet>
+  </PropertyGroup>
+  <PropertyGroup>
+    <StartupObject>
+    </StartupObject>
+  </PropertyGroup>
+  <PropertyGroup>
+    <ApplicationIcon>
+    </ApplicationIcon>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Actemium.ClickOnce, Version=1.2.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Actemium.ClickOnce.1.2.0\lib\net20\Actemium.ClickOnce.dll</HintPath>
+    </Reference>
+    <Reference Include="Actemium.Data, Version=1.24.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Actemium.Data.1.24.0\lib\net20\Actemium.Data.dll</HintPath>
+    </Reference>
+    <Reference Include="Actemium.Diagnostics, Version=2.31.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Actemium.Diagnostics.2.31.0\lib\net20\Actemium.Diagnostics.dll</HintPath>
+    </Reference>
+    <Reference Include="Actemium.Net.Multicast, Version=1.0.2.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Actemium.Net.Multicast.1.0.2\lib\net20\Actemium.Net.Multicast.dll</HintPath>
+    </Reference>
+    <Reference Include="Actemium.Security, Version=2.4.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Actemium.Security.2.4.0\lib\net20\Actemium.Security.dll</HintPath>
+    </Reference>
+    <Reference Include="Actemium.Services.WCF, Version=1.19.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Actemium.Services.WCF.1.19.0\lib\net35\Actemium.Services.WCF.dll</HintPath>
+    </Reference>
+    <Reference Include="Actemium.Translations, Version=1.2.5.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Actemium.Translations.1.2.5\lib\net35\Actemium.Translations.dll</HintPath>
+    </Reference>
+    <Reference Include="Actemium.UserManagement2, Version=2.6.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Actemium.UserManagement2.2.6.0\lib\net40\Actemium.UserManagement2.dll</HintPath>
+    </Reference>
+    <Reference Include="Actemium.UserManagement2.Model, Version=2.6.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Actemium.UserManagement2.2.6.0\lib\net40\Actemium.UserManagement2.Model.dll</HintPath>
+    </Reference>
+    <Reference Include="Actemium.Windows.Forms, Version=2.14.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Actemium.Windows.Forms.2.14.0\lib\net20\Actemium.Windows.Forms.dll</HintPath>
+    </Reference>
+    <Reference Include="Actemium.Windows.Forms.DevComponents2, Version=1.17.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Actemium.Windows.Forms.DevComponents2.1.17.0\lib\net40\Actemium.Windows.Forms.DevComponents2.dll</HintPath>
+    </Reference>
+    <Reference Include="Actemium.Windows.Forms.MenuGenerator, Version=1.6.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Actemium.Windows.Forms.MenuGenerator.1.6.0\lib\net40\Actemium.Windows.Forms.MenuGenerator.dll</HintPath>
+    </Reference>
+    <Reference Include="Actemium.Windows.Forms.SuperGrid, Version=1.9.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Actemium.Windows.Forms.SuperGrid.1.9.0\lib\net45\Actemium.Windows.Forms.SuperGrid.dll</HintPath>
+    </Reference>
+    <Reference Include="DevComponents.DotNetBar.Design, Version=12.9.0.3, Culture=neutral, PublicKeyToken=90f470f34c89ccaf, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\Assemblies\DevComponents.DotNetBar.Design.dll</HintPath>
+    </Reference>
+    <Reference Include="DevComponents.DotNetBar.SuperGrid, Version=12.9.0.3, Culture=neutral, PublicKeyToken=7eb7c3a35b91de04, processorArchitecture=MSIL">
+      <HintPath>..\packages\Actemium.Windows.Forms.DevComponents2.1.17.0\lib\net40\DevComponents.DotNetBar.SuperGrid.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="DevComponents.DotNetBar2, Version=12.9.0.3, Culture=neutral, PublicKeyToken=7eb7c3a35b91de04, processorArchitecture=MSIL">
+      <HintPath>..\packages\Actemium.Windows.Forms.DevComponents2.1.17.0\lib\net40\DevComponents.DotNetBar2.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="DevComponents.SuperGrid.Design, Version=12.9.0.3, Culture=neutral, PublicKeyToken=26d81176cfa2b486, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\Assemblies\DevComponents.SuperGrid.Design.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.configuration" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Deployment" />
+    <Reference Include="System.Design" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.ServiceModel" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml" />
+    <Reference Include="WindowsBase" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Base\BasePageForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Base\BasePageForm.Designer.cs">
+      <DependentUpon>BasePageForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Base\BasePopupForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Base\BasePopupForm.Designer.cs">
+      <DependentUpon>BasePopupForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Base\BaseMainForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Base\BaseMainForm.Designer.cs">
+      <DependentUpon>BaseMainForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Base\PropertyGrids\PropertyGridElement.cs" />
+    <Compile Include="DetachedForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="DetachedForm.designer.cs">
+      <DependentUpon>DetachedForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="DevComponentStyles\ButtonX.cs" />
+    <Compile Include="Enums\CommentSources.cs" />
+    <Compile Include="Enums\Languages.cs" />
+    <Compile Include="Enums\NavigationItemGroups.cs" />
+    <Compile Include="Enums\NavigationItems.cs" />
+    <Compile Include="Events\ScreenChanged.cs" />
+    <Compile Include="Events\ScreenChangedEventArgs.cs" />
+    <Compile Include="ExtensionMethods\ExcludeFromNavigationStackAttribute.cs" />
+    <Compile Include="ExtensionMethods\NavigationItems.cs" />
+    <Compile Include="ExtensionMethods\SuperGridExtensions.cs" />
+    <Compile Include="GlobalHandler.cs" />
+    <Compile Include="Helpers\MDHelper.cs" />
+    <Compile Include="Helpers\HistoryHelper.cs" />
+    <Compile Include="Helpers\ApplicationSettingsHelper.cs" />
+    <Compile Include="Helpers\ApplicationTranslationsHelper.cs" />
+    <Compile Include="Helpers\ORHelper.cs" />
+    <Compile Include="Helpers\UMMembershipHelper.cs" />
+    <Compile Include="Helpers\UMPropertiesHelper.cs" />
+    <Compile Include="Helpers\UMHelper.cs" />
+    <Compile Include="MainForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="MainForm.Designer.cs">
+      <DependentUpon>MainForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\10_MasterData\MasterData.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Pages\10_MasterData\MasterData.Designer.cs">
+      <DependentUpon>MasterData.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\20_Orders\OrdersPage.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Pages\20_Orders\OrdersPage.Designer.cs">
+      <DependentUpon>OrdersPage.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\90_Administration\HistoryKeyManagementForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Pages\90_Administration\HistoryKeyManagementForm.Designer.cs">
+      <DependentUpon>HistoryKeyManagementForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\90_Administration\ApplicationSettingsManagementForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Pages\90_Administration\ComputerManagementForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Pages\90_Administration\ComputerManagementForm.designer.cs">
+      <DependentUpon>ComputerManagementForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\90_Administration\ApplicationSettingsManagementForm.Designer.cs">
+      <DependentUpon>ApplicationSettingsManagementForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\90_Administration\TranslationsForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Pages\90_Administration\TranslationsForm.designer.cs">
+      <DependentUpon>TranslationsForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\90_Administration\UserManagement2Form.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Pages\90_Administration\UserManagement2Form.Designer.cs">
+      <DependentUpon>UserManagement2Form.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\90_Administration\UserManagementForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Pages\90_Administration\UserManagementForm.Designer.cs">
+      <DependentUpon>UserManagementForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\90_Administration\GroupManagementForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Pages\90_Administration\GroupManagementForm.Designer.cs">
+      <DependentUpon>GroupManagementForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\ErrorForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Pages\ErrorForm.Designer.cs">
+      <DependentUpon>ErrorForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\EmptyForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Pages\EmptyForm.Designer.cs">
+      <DependentUpon>EmptyForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\UserProfileForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Pages\UserProfileForm.Designer.cs">
+      <DependentUpon>UserProfileForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\HomeForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Pages\HomeForm.Designer.cs">
+      <DependentUpon>HomeForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\LogonForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Pages\LogonForm.Designer.cs">
+      <DependentUpon>LogonForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="PopupPages\AboutForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="PopupPages\AboutForm.Designer.cs">
+      <DependentUpon>AboutForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="PopupPages\MDPropertiesPopupForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="PopupPages\MDPropertiesPopupForm.Designer.cs">
+      <DependentUpon>MDPropertiesPopupForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="PopupPages\MembershipPopupForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="PopupPages\MembershipPopupForm.designer.cs">
+      <DependentUpon>MembershipPopupForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="PopupPages\PropertiesPopupForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="PopupPages\PropertiesPopupForm.designer.cs">
+      <DependentUpon>PropertiesPopupForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="PopupPages\ChangePasswordPopupForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="PopupPages\ChangePasswordPopupForm.Designer.cs">
+      <DependentUpon>ChangePasswordPopupForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="PopupPages\SplashScreen.cs" />
+    <Compile Include="PopupPages\MDAddModifyPopupForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="PopupPages\MDAddModifyPopupForm.Designer.cs">
+      <DependentUpon>MDAddModifyPopupForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="PopupPages\UserManagement2AddModifyPopupForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="PopupPages\UserManagement2AddModifyPopupForm.Designer.cs">
+      <DependentUpon>UserManagement2AddModifyPopupForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="PopupPages\WebBrowserPopupForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="PopupPages\WebBrowserPopupForm.Designer.cs">
+      <DependentUpon>WebBrowserPopupForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="PopupPages\MessageBoxForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="PopupPages\MessageBoxForm.designer.cs">
+      <DependentUpon>MessageBoxForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="PopupPages\Help.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="PopupPages\Help.designer.cs">
+      <DependentUpon>Help.cs</DependentUpon>
+    </Compile>
+    <Compile Include="PopupPages\SplashScreenForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="PopupPages\SplashScreenForm.designer.cs">
+      <DependentUpon>SplashScreenForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Program.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+      <DependentUpon>Settings.settings</DependentUpon>
+    </Compile>
+    <Compile Include="ScreenManagerPanel.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Settings.cs" />
+    <Compile Include="Base\BaseUserControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Base\BaseUserControl.Designer.cs">
+      <DependentUpon>BaseUserControl.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Translations\Translations.cs" />
+    <Compile Include="UserControls\GridEditControls\GridListComboBoxExEditControl.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="UserControls\GridEditControls\GridListComboBoxExEditControl.Designer.cs">
+      <DependentUpon>GridListComboBoxExEditControl.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UserControls\GridEditControls\GridSourceLevelsComboBoxExEditControl.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="UserControls\GridEditControls\GridSourceLevelsComboBoxExEditControl.Designer.cs">
+      <DependentUpon>GridSourceLevelsComboBoxExEditControl.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UserControls\PeriodFilterUserControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UserControls\PeriodFilterUserControl.Designer.cs">
+      <DependentUpon>PeriodFilterUserControl.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UserControls\DateTimeUserControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UserControls\DateTimeUserControl.Designer.cs">
+      <DependentUpon>DateTimeUserControl.cs</DependentUpon>
+    </Compile>
+    <Compile Include="WindowsRegistryHandler.cs" />
+    <Compile Include="WindowsRegistryHandler1.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Base\BasePageForm.resx">
+      <DependentUpon>BasePageForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Base\BasePopupForm.resx">
+      <DependentUpon>BasePopupForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Base\BaseMainForm.resx">
+      <DependentUpon>BaseMainForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="DetachedForm.resx">
+      <DependentUpon>DetachedForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="MainForm.resx">
+      <DependentUpon>MainForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Pages\10_MasterData\MasterData.resx">
+      <DependentUpon>MasterData.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Pages\20_Orders\OrdersPage.resx">
+      <DependentUpon>OrdersPage.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Pages\90_Administration\HistoryKeyManagementForm.resx">
+      <DependentUpon>HistoryKeyManagementForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Pages\90_Administration\ApplicationSettingsManagementForm.resx">
+      <DependentUpon>ApplicationSettingsManagementForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Pages\90_Administration\ComputerManagementForm.resx">
+      <DependentUpon>ComputerManagementForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Pages\90_Administration\UserManagement2Form.resx">
+      <DependentUpon>UserManagement2Form.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Pages\90_Administration\UserManagementForm.resx">
+      <DependentUpon>UserManagementForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Pages\90_Administration\GroupManagementForm.resx">
+      <DependentUpon>GroupManagementForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Pages\ErrorForm.resx">
+      <DependentUpon>ErrorForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Pages\EmptyForm.resx">
+      <DependentUpon>EmptyForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Pages\UserProfileForm.resx">
+      <DependentUpon>UserProfileForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Pages\HomeForm.resx">
+      <DependentUpon>HomeForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Pages\LogonForm.resx">
+      <DependentUpon>LogonForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="PopupPages\AboutForm.resx">
+      <DependentUpon>AboutForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="PopupPages\MDPropertiesPopupForm.resx">
+      <DependentUpon>MDPropertiesPopupForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="PopupPages\MembershipPopupForm.resx">
+      <DependentUpon>MembershipPopupForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="PopupPages\PropertiesPopupForm.resx">
+      <DependentUpon>PropertiesPopupForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="PopupPages\ChangePasswordPopupForm.resx">
+      <DependentUpon>ChangePasswordPopupForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="PopupPages\MDAddModifyPopupForm.resx">
+      <DependentUpon>MDAddModifyPopupForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="PopupPages\UserManagement2AddModifyPopupForm.resx">
+      <DependentUpon>UserManagement2AddModifyPopupForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="PopupPages\WebBrowserPopupForm.resx">
+      <DependentUpon>WebBrowserPopupForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="PopupPages\MessageBoxForm.resx">
+      <DependentUpon>MessageBoxForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="PopupPages\Help.resx">
+      <DependentUpon>Help.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="PopupPages\SplashScreenForm.resx">
+      <DependentUpon>SplashScreenForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Properties\licenses.licx" />
+    <EmbeddedResource Include="Base\BaseUserControl.resx">
+      <DependentUpon>BaseUserControl.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <SubType>Designer</SubType>
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UserControls\PeriodFilterUserControl.resx">
+      <DependentUpon>PeriodFilterUserControl.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UserControls\DateTimeUserControl.resx">
+      <DependentUpon>DateTimeUserControl.cs</DependentUpon>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\IE_Windows_16.png" />
+    <None Include="Resources\user3_certificate.png" />
+    <None Include="Resources\user3.png" />
+    <None Include="Resources\user_certificate.png" />
+    <None Include="Resources\user.png" />
+    <None Include="Resources\keys_ok.png" />
+    <None Include="Resources\keys_error.png" />
+    <None Include="Resources\key_error.png" />
+    <None Include="Resources\key_ok.png" />
+    <None Include="Resources\users_edit.png" />
+    <None Include="Resources\users_delete.png" />
+    <None Include="Resources\users_checkbox_unchecked.png" />
+    <None Include="Resources\users_checkbox_checked.png" />
+    <None Include="Resources\users_add.png" />
+    <None Include="Resources\users_preferences.png" />
+    <None Include="Resources\user_checkbox_unchecked.png" />
+    <None Include="Resources\user_checkbox_checked.png" />
+    <None Include="Resources\workstation_preferences.png" />
+    <None Include="Resources\workstation_edit.png" />
+    <None Include="Resources\workstation_delete.png" />
+    <None Include="Resources\workstation_checkbox_unchecked.png" />
+    <None Include="Resources\workstation_checkbox_checked.png" />
+    <None Include="Resources\workstation_add.png" />
+    <None Include="Resources\user_preferences.png" />
+    <None Include="Resources\user_edit.png" />
+    <None Include="Resources\user_add.png" />
+    <None Include="Resources\preferences_edit.png" />
+    <None Include="Resources\user_delete.png" />
+    <None Include="Resources\nav_refresh_green.png" />
+    <None Include="app.config" />
+    <None Include="packages.config" />
+    <None Include="Resources\btnDeselectAll1.png" />
+    <None Include="Resources\ActemiumLogo.png" />
+    <None Include="Resources\history.png" />
+    <None Include="Resources\history_Keys.png" />
+    <None Include="Resources\history_gearwheel.png" />
+    <Content Include="Resources\IconExperience\IE_NavigateBottom_16.png" />
+    <None Include="Resources\IconExperience\IE_Rework_16.png" />
+    <Content Include="Resources\IconExperience\IE_Switch_16.png" />
+    <Content Include="Resources\IconExperience\IE_validate_16.png" />
+    <None Include="Resources\ActemiumIcon_24.png" />
+    <Content Include="Resources\IconExperience\IE_Number_16.png" />
+    <Content Include="Resources\IconExperience\IE_Back_16.png" />
+    <None Include="Resources\IconExperience\IE_ComputerManagement_24.png" />
+    <None Include="Resources\IconExperience\IE_ComputerAdd_16.png" />
+    <None Include="Resources\IconExperience\IE_ComputerDelete_16.png" />
+    <None Include="Resources\IconExperience\IE_ComputerModify_16.png" />
+    <Content Include="Resources\IconExperience\IE_ConfigurationModify_16.png" />
+    <Content Include="Resources\IconExperience\IE_Configuration_16.png" />
+    <Content Include="Resources\IconExperience\IE_Configuration_24.png" />
+    <Content Include="Resources\IconExperience\IE_GroupAdd_16.png" />
+    <Content Include="Resources\IconExperience\IE_GroupDelete_16.png" />
+    <Content Include="Resources\IconExperience\IE_GroupManagement_24.png" />
+    <Content Include="Resources\IconExperience\IE_GroupModify_16.png" />
+    <None Include="Resources\IconExperience\IE_Home_16.png" />
+    <Content Include="Resources\IconExperience\IE_NavigateDown_16.png" />
+    <Content Include="Resources\IconExperience\IE_NavigateTop_16.png" />
+    <Content Include="Resources\IconExperience\IE_NavigateUp_16.png" />
+    <Content Include="Resources\IconExperience\IE_Next_16.png" />
+    <Content Include="Resources\IconExperience\IE_OK_16.png" />
+    <Content Include="Resources\IconExperience\IE_OK_24.png" />
+    <Content Include="Resources\IconExperience\IE_OK_32.png" />
+    <None Include="Resources\IconExperience\IE_Properties_16.png" />
+    <Content Include="Resources\IconExperience\IE_PropertiesSave_16.png" />
+    <None Include="Resources\IconExperience\IE_TranslationModify.png" />
+    <None Include="Resources\IconExperience\IE_TranslationManagement_24.png" />
+    <None Include="Resources\IconExperience\IE_Refresh_16.png" />
+    <None Include="Resources\IconExperience\IE_SignForbidden_16.png" />
+    <Content Include="Resources\IconExperience\IE_TagOk_16.png" />
+    <Content Include="Resources\IconExperience\IE_Tag_16.png" />
+    <Content Include="Resources\IconExperience\IE_UserAdd_16.png" />
+    <Content Include="Resources\IconExperience\IE_UserDelete_16.png" />
+    <Content Include="Resources\IconExperience\IE_UserManagement_24.png" />
+    <Content Include="Resources\IconExperience\IE_UserModify_16.png" />
+    <None Include="Resources\btnHome.gif" />
+    <None Include="Resources\btnUpdate.png" />
+    <None Include="Resources\ActemiumSplashscreen.png" />
+    <None Include="Resources\IconExperience\IE_ApplicationExit_16.png" />
+    <None Include="Resources\IconExperience\IE_ApplicationExit_24.png" />
+    <None Include="Resources\IconExperience\IE_ApplicationExit_32.png" />
+    <Content Include="Resources\IconExperience\IE_Comment_16.png" />
+    <Content Include="Resources\IconExperience\IE_Comment_24.png" />
+    <Content Include="Resources\IconExperience\IE_Comment_32.png" />
+    <Content Include="Resources\IconExperience\IE_Help_16.png" />
+    <Content Include="Resources\IconExperience\IE_Help_24.png" />
+    <Content Include="Resources\IconExperience\IE_Help_32.png" />
+    <None Include="Resources\IconExperience\IE_Login_32.png" />
+    <None Include="Resources\IconExperience\IE_Login_16.png" />
+    <None Include="Resources\IconExperience\IE_Login_24.png" />
+    <Content Include="Resources\Busy.gif" />
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+    <None Include="Resources\Exclamation.png" />
+    <None Include="Resources\btnSelectAll.png" />
+    <None Include="Resources\btnDeselectAll.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Pages\80_Diagnostics\" />
+    <Folder Include="Properties\DataSources\" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Actemium.ApplicationSettings\Actemium.ApplicationSettings.csproj">
+      <Project>{797d74e7-c358-4356-862a-3074ff19af59}</Project>
+      <Name>Actemium.ApplicationSettings</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Actemium.L3IC.OrderManager.Business\Actemium.L3IC.OrderManager.Business.csproj">
+      <Project>{081f686a-74a1-4885-9dd4-ecbb950ca790}</Project>
+      <Name>Actemium.L3IC.OrderManager.Business</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Actemium.L3IC.OrderManager.General\Actemium.L3IC.OrderManager.General.csproj">
+      <Project>{2a6b5ad2-f5dd-4ed7-83bd-99ea4fc11804}</Project>
+      <Name>Actemium.L3IC.OrderManager.General</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Actemium.History\Actemium.History.csproj">
+      <Project>{8fdeef87-e168-4c95-b4d5-adf8b4509083}</Project>
+      <Name>Actemium.History</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Actemium.L3IC.OrderManager.Model\Actemium.L3IC.OrderManager.Model.csproj">
+      <Project>{BE191BF8-7921-4FF0-BF3B-A40D0A0128B1}</Project>
+      <Name>Actemium.L3IC.OrderManager.Model</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <PropertyGroup>
+    <PreBuildEvent>
+    </PreBuildEvent>
+  </PropertyGroup>
+  <PropertyGroup>
+    <PostBuildEvent>
+    </PostBuildEvent>
+  </PropertyGroup>
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

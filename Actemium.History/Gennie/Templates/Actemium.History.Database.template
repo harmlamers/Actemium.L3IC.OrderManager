@@ -1,0 +1,250 @@
+<%@Language=CSharp%><%
+    // Define the name the outputcode should be written to
+    //outputFile.PathName += (@"\Database\" + dataObject.Schema );
+    outputFile.PathName += (@"\Database" );
+    outputFile.FileName = dataObject.Name + ".Gennie.sql";
+
+	AttributeCollection primaryKeys = dataObject.GetAll( DataAttributeField.PrimaryKey);
+
+
+// INSERT part
+	String InsertParams = "";
+	String InsertFields = "";
+	String InsertValues = "";
+	String InsertIdentity = "";
+
+	foreach(DataAttribute attribute in dataObject)
+	{
+		if (InsertFields != "")
+		{
+			InsertFields += @",\r\n";
+			InsertValues += @",\r\n";
+		}
+		if (InsertParams != "")
+			InsertParams += @",\r\n";
+
+		InsertParams += string.Format("\t\t@{0} {1}", GennieHelper.RemoveHungarianPrefix( attribute.Name).PadRight(32), attribute.DataBaseType);
+		if (attribute.DataBaseType.IndexOf("char") >= 0)
+		    InsertParams += string.Format( "({0})", attribute.TypeLength);
+		if (attribute.DataBaseType.IndexOf("decimal") >= 0)
+				InsertParams += string.Format( "({0})", attribute.TypeLength);
+
+		if (attribute.IdentityColumn)
+			InsertParams += " OUTPUT";
+
+		if (!attribute.IdentityColumn)
+		{
+			InsertFields += string.Format("\t\t[{0}]", attribute.Name);
+			InsertValues += string.Format("\t\t@{0}", GennieHelper.RemoveHungarianPrefix(attribute.Name));
+		}
+		else
+		{
+			InsertIdentity = string.Format("\tSELECT @{0}= SCOPE_IDENTITY();", attribute.Name);
+		}
+	}
+
+
+// DELETE part
+	string DeleteParams = "";
+	string DeleteWhere = "";
+	foreach(DataAttribute attribute in dataObject)
+	{
+		if (attribute.PrimaryKey)
+		{
+			if (DeleteParams != "")
+				DeleteParams += @",\r\n";
+			DeleteParams += string.Format("\t\t@{0} {1}", attribute.Name.PadRight(32), attribute.DataBaseType);
+
+			if (attribute.DataBaseType.IndexOf("char") >= 0)
+			    DeleteParams += string.Format( "({0})", attribute.TypeLength);
+			if (attribute.DataBaseType.IndexOf("decimal") >= 0)
+					DeleteParams += string.Format( "({0})", attribute.TypeLength);
+
+			if (DeleteWhere != "")
+				DeleteWhere += @" AND \r\n";
+			DeleteWhere += String.Format("\t\t[{0}] = @{1}", attribute.Name, GennieHelper.RemoveHungarianPrefix( attribute.Name));
+		}
+	}
+
+// MODIFY part
+	string ModifyParams = "";
+	string ModifyFields = "";
+	string ModifyWhere = "";
+	
+	foreach(DataAttribute attribute in dataObject)
+	{
+		if (ModifyParams != "")
+			ModifyParams += @",\r\n";	
+				
+		ModifyParams += string.Format("\t\t@{0} {1}", GennieHelper.RemoveHungarianPrefix(attribute.Name).PadRight(32), attribute.DataBaseType);
+
+		if (attribute.DataBaseType.IndexOf("char") >= 0)
+			ModifyParams += string.Format( "({0})", attribute.TypeLength);
+		if (attribute.DataBaseType.IndexOf("decimal") >= 0)
+			ModifyParams += string.Format( "({0})", attribute.TypeLength);
+
+		if (attribute.PrimaryKey)
+		{
+		if (ModifyWhere  != "")
+			ModifyWhere  += @" AND \r\n";
+			ModifyWhere += string.Format( "\t\t[{0}].[{1}] = @{2}", dataObject.Name, attribute.Name, GennieHelper.RemoveHungarianPrefix(attribute.Name));
+
+		}
+		else if (!attribute.IdentityColumn)
+		{
+			if (ModifyFields != "")
+				ModifyFields += @", \r\n";
+			ModifyFields += string.Format( "\t\t[{0}].[{1}] = @{2}", dataObject.Name, attribute.Name, GennieHelper.RemoveHungarianPrefix(attribute.Name));
+
+		}
+	}
+
+
+// GETBYID part
+	string GetByIdParams = "";
+	string GetByIdWhere = "";
+	foreach(DataAttribute attribute in dataObject.GetAll( DataAttributeField.PrimaryKey))
+	{
+		if (GetByIdParams  != "")
+			GetByIdParams  += @",\r\n";
+		if (GetByIdWhere  != "")
+			GetByIdWhere  += @" AND \r\n";
+		GetByIdParams += string.Format( "\t\t@{0} {1}", GennieHelper.RemoveHungarianPrefix( attribute.Name).PadRight(32), attribute.DataBaseType);
+
+		if (attribute.DataBaseType.IndexOf("char") >= 0)
+			GetByIdParams += string.Format( "({0})", attribute.TypeLength);
+		if (attribute.DataBaseType.IndexOf("decimal") >= 0)
+			GetByIdParams += string.Format( "({0})", attribute.TypeLength);
+
+		GetByIdWhere += string.Format( "\t\t[{0}].[{1}] = @{2}",
+			dataObject.Name, attribute.Name, GennieHelper.RemoveHungarianPrefix( attribute.Name));
+	}
+%>
+
+<%if (dataObject.Type != "view") { %>
+if exists (SELECT * FROM sys.procedures P INNER JOIN sys.schemas S ON P.schema_id=S.schema_id WHERE S.name='<%=dataObject.Schema%>' AND P.name='<%=dataObject.Name%>Gennie_Add')
+	drop procedure [<%=dataObject.Schema%>].[<%=dataObject.Name%>Gennie_Add]
+GO
+
+/* Adds a <%=GennieHelper.Singularity(dataObject.Name)%> to the database */
+CREATE PROCEDURE [<%=dataObject.Schema%>].[<%=dataObject.Name%>Gennie_Add] (
+<%=InsertParams%>
+)
+AS
+	INSERT INTO [<%=dataObject.Schema%>].[<%=dataObject.Name%>] (
+<%=InsertFields%>
+) VALUES (
+<%=InsertValues%>
+)
+<%=InsertIdentity%>
+GO
+<%} // endif (dataObject.Type != "view")%>
+
+
+<%if (dataObject.Type != "view") { %>
+if exists (SELECT * FROM sys.procedures P INNER JOIN sys.schemas S ON P.schema_id=S.schema_id WHERE S.name='<%=dataObject.Schema%>' AND P.name='<%=dataObject.Name%>Gennie_Delete')
+	drop procedure [<%=dataObject.Schema%>].[<%=dataObject.Name%>Gennie_Delete]
+GO
+
+/* Deletes a <%=GennieHelper.Singularity(dataObject.Name)%> from the database */
+CREATE PROCEDURE [<%=dataObject.Schema%>].[<%=dataObject.Name%>Gennie_Delete] (
+<%=DeleteParams%>
+)
+AS
+	DELETE FROM [<%=dataObject.Schema%>].[<%=dataObject.Name%>] WHERE (
+<%=DeleteWhere%>
+)
+GO
+<%} // endif (dataObject.Type != "view")%>
+
+
+<%if ((dataObject.GetAll( DataAttributeField.PrimaryKey).Count > 0) && (dataObject.Count > dataObject.GetAll( DataAttributeField.PrimaryKey).Count) && (dataObject.Type != "view")) { %>
+if exists (SELECT * FROM sys.procedures P INNER JOIN sys.schemas S ON P.schema_id=S.schema_id WHERE S.name='<%=dataObject.Schema%>' AND P.name='<%=dataObject.Name%>Gennie_Modify')
+	drop procedure [<%=dataObject.Schema%>].[<%=dataObject.Name%>Gennie_Modify]
+GO
+
+
+/* Modifies an <%=GennieHelper.Singularity(dataObject.Name)%> in the database */
+CREATE PROCEDURE [<%=dataObject.Schema%>].[<%=dataObject.Name%>Gennie_Modify] (
+<%=ModifyParams%>
+)
+AS
+	UPDATE [<%=dataObject.Schema%>].[<%=dataObject.Name%>] SET
+<%=ModifyFields%>
+	WHERE
+<%=ModifyWhere%>
+GO
+<%} // endif ((dataObject.GetAll( DataAttributeField.PrimaryKey).Count > 0) && (dataObject.Count > dataObject.GetAll( DataAttributeField.PrimaryKey).Count) && (dataObject.Type != "view"))%>
+
+if exists (SELECT * FROM sys.procedures P INNER JOIN sys.schemas S ON P.schema_id=S.schema_id WHERE S.name='<%=dataObject.Schema%>' AND P.name='<%=dataObject.Name%>Gennie_GetAll')
+	drop procedure [<%=dataObject.Schema%>].[<%=dataObject.Name%>Gennie_GetAll]
+GO
+
+/* Retrieves all <%=dataObject.Name%> from the database */
+CREATE PROCEDURE [<%=dataObject.Schema%>].[<%=dataObject.Name%>Gennie_GetAll]
+AS
+SELECT *
+FROM [<%=dataObject.Schema%>].[<%=dataObject.Name%>]
+
+GO
+
+
+<%if (dataObject.Type != "view") { %>
+if exists (SELECT * FROM sys.procedures P INNER JOIN sys.schemas S ON P.schema_id=S.schema_id WHERE S.name='<%=dataObject.Schema%>' AND P.name='<%=dataObject.Name%>Gennie_GetById')
+	drop procedure [<%=dataObject.Schema%>].[<%=dataObject.Name%>Gennie_GetById]
+GO
+
+/* Retrieves one <%=GennieHelper.Singularity(dataObject.Name)%> from the database using its primary key */
+CREATE PROCEDURE [<%=dataObject.Schema%>].[<%=dataObject.Name%>Gennie_GetById] (
+<%=GetByIdParams%>
+)
+AS
+	SELECT *
+	FROM [<%=dataObject.Schema%>].[<%=dataObject.Name%>]
+	WHERE
+<%=GetByIdWhere%>
+GO
+<%} // endif (dataObject.Type != "view")%>
+
+<%
+string ForeignKeyParams = "";
+string ForeignKeyWhere = "";
+foreach (DataAttribute attribute in dataObject)
+{
+    ForeignKeyParams = "";
+    ForeignKeyWhere = "";
+	if (attribute.ForeignKey)
+	{
+	    if (ForeignKeyParams != "")
+	        ForeignKeyParams += @", \r\n";
+	    if (ForeignKeyWhere != "")
+	        ForeignKeyWhere += @" AND \r\n";
+		ForeignKeyParams +=  string.Format("@{0} {1}", GennieHelper.RemoveHungarianPrefix( attribute.Name).PadRight(32), attribute.DataBaseType);
+		if (attribute.DataBaseType.IndexOf("char") >= 0)
+		    ForeignKeyParams += string.Format( "({0})",attribute.TypeLength);
+		if (attribute.DataBaseType.IndexOf("decimal") >= 0)
+		    ForeignKeyParams += string.Format( "({0})",attribute.TypeLength);
+
+		ForeignKeyWhere += 	string.Format("\t\t[{0}]=@{1}", attribute.Name, GennieHelper.RemoveHungarianPrefix(attribute.Name));
+		if (attribute.NullAllowed)
+			ForeignKeyWhere += string.Format(" OR (@{0} is NULL AND {1} is NULL)", GennieHelper.RemoveHungarianPrefix(attribute.Name), attribute.Name);
+
+%>
+if exists (SELECT * FROM sys.procedures P INNER JOIN sys.schemas S ON P.schema_id=S.schema_id WHERE S.name='<%=dataObject.Schema%>' AND P.name='<%=dataObject.Name%>Gennie_GetBy<%=GennieHelper.RemoveHungarianPrefix(attribute.Name)%>')
+	drop procedure [<%=dataObject.Schema%>].[<%=dataObject.Name%>Gennie_GetBy<%=GennieHelper.RemoveHungarianPrefix(attribute.Name)%>]
+GO
+
+/* Retrieves <%=dataObject.Name%> from the database using one of it's foreign keys */
+CREATE PROCEDURE [<%=dataObject.Schema%>].[<%=dataObject.Name%>Gennie_GetBy<%=GennieHelper.RemoveHungarianPrefix(attribute.Name)%>] (
+<%=ForeignKeyParams%>
+)
+AS
+	SELECT *
+	FROM [<%=dataObject.Schema%>].[<%=dataObject.Name%>]
+	WHERE
+	<%=ForeignKeyWhere%>
+GO
+
+<%	}
+}
+%>

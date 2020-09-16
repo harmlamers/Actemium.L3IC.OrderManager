@@ -1,0 +1,130 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>8.0.30703</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{2A6B5AD2-F5DD-4ED7-83BD-99EA4FC11804}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>Actemium.L3IC.OrderManager.General</RootNamespace>
+    <AssemblyName>Actemium.L3IC.OrderManager.General</AssemblyName>
+    <TargetFrameworkVersion>v4.7</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <SccProjectName>SAK</SccProjectName>
+    <SccLocalPath>SAK</SccLocalPath>
+    <SccAuxPath>SAK</SccAuxPath>
+    <SccProvider>SAK</SccProvider>
+    <TargetFrameworkProfile />
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <Prefer32Bit>false</Prefer32Bit>
+    <CodeAnalysisRuleSet>D:\TFS\Actemium Preferred Rules.ruleset</CodeAnalysisRuleSet>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <PlatformTarget>x86</PlatformTarget>
+    <Prefer32Bit>false</Prefer32Bit>
+    <CodeAnalysisRuleSet>D:\TFS\Actemium Preferred Rules.ruleset</CodeAnalysisRuleSet>
+  </PropertyGroup>
+  <PropertyGroup>
+    <SignAssembly>true</SignAssembly>
+  </PropertyGroup>
+  <PropertyGroup>
+    <AssemblyOriginatorKeyFile>
+    </AssemblyOriginatorKeyFile>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Actemium.Data, Version=1.24.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Actemium.Data.1.24.0\lib\net20\Actemium.Data.dll</HintPath>
+    </Reference>
+    <Reference Include="Actemium.Diagnostics, Version=2.31.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Actemium.Diagnostics.2.31.0\lib\net20\Actemium.Diagnostics.dll</HintPath>
+    </Reference>
+    <Reference Include="Actemium.Net.Multicast, Version=1.0.2.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Actemium.Net.Multicast.1.0.2\lib\net20\Actemium.Net.Multicast.dll</HintPath>
+    </Reference>
+    <Reference Include="Actemium.Security, Version=2.4.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Actemium.Security.2.4.0\lib\net20\Actemium.Security.dll</HintPath>
+    </Reference>
+    <Reference Include="Actemium.Services.WCF, Version=1.19.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Actemium.Services.WCF.1.19.0\lib\net35\Actemium.Services.WCF.dll</HintPath>
+    </Reference>
+    <Reference Include="Actemium.Translations, Version=1.2.5.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Actemium.Translations.1.2.5\lib\net35\Actemium.Translations.dll</HintPath>
+    </Reference>
+    <Reference Include="Actemium.UserManagement2, Version=2.6.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Actemium.UserManagement2.2.6.0\lib\net40\Actemium.UserManagement2.dll</HintPath>
+    </Reference>
+    <Reference Include="Actemium.UserManagement2.Model, Version=2.6.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Actemium.UserManagement2.2.6.0\lib\net40\Actemium.UserManagement2.Model.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.configuration" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.DirectoryServices" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml" />
+    <Reference Include="System.Xml.Linq" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Configuration\ConfigHandlerNavigation.cs" />
+    <Compile Include="Configuration\NavigationTabBar.cs" />
+    <Compile Include="Configuration\NavigationTabItem.cs" />
+    <Compile Include="Configuration\NavigationTabItemCollection.cs" />
+    <Compile Include="Configuration\SettingsBase.cs" />
+    <Compile Include="Enums\ApplicationSettings.cs" />
+    <Compile Include="Enums\ApplicationSettingsCategories.cs" />
+    <Compile Include="Enums\DataTypes.cs" />
+    <Compile Include="Enums\NameAbbreviationStyle.cs" />
+    <Compile Include="Enums\UserManagementProperties.cs" />
+    <Compile Include="ExtensionMethods\StringExtensionMethods.cs" />
+    <Compile Include="ExtensionMethods\TypeExtensions.cs" />
+    <Compile Include="ExtensionMethods\XmlDocumentExtensionMethods.cs" />
+    <Compile Include="LockList.cs" />
+    <Compile Include="Configuration\ConfigHandler.cs" />
+    <Compile Include="NameAbbreviation.cs" />
+    <Compile Include="Translations\CommonMessageAttribute.cs" />
+    <Compile Include="Translations\TranslatableEnum.cs" />
+    <Compile Include="Translations\TranslationKeys.cs" />
+    <Compile Include="Translations\TranslationExtensionMethods.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Enums\ACIEnums.cs" />
+    <Compile Include="Translations\TranslationSubKey.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="packages.config" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <PropertyGroup>
+    <PostBuildEvent>
+    </PostBuildEvent>
+  </PropertyGroup>
+  <PropertyGroup>
+    <PreBuildEvent>
+    </PreBuildEvent>
+  </PropertyGroup>
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

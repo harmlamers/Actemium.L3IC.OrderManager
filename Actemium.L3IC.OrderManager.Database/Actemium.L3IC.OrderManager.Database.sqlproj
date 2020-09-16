@@ -1,0 +1,250 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003" ToolsVersion="4.0">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <Name>Actemium.EmptyClient.Database</Name>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectVersion>4.1</ProjectVersion>
+    <ProjectGuid>{608a4d16-e082-49ba-af4c-6985fe5fee22}</ProjectGuid>
+    <DSP>Microsoft.Data.Tools.Schema.Sql.Sql130DatabaseSchemaProvider</DSP>
+    <OutputType>Database</OutputType>
+    <RootPath>
+    </RootPath>
+    <RootNamespace>Actemium.EmptyClient.Database</RootNamespace>
+    <AssemblyName>Actemium.EmptyClient.Database</AssemblyName>
+    <ModelCollation>1033, CI</ModelCollation>
+    <DefaultFileStructure>BySchemaAndSchemaType</DefaultFileStructure>
+    <DeployToDatabase>True</DeployToDatabase>
+    <TargetFrameworkVersion>v4.7</TargetFrameworkVersion>
+    <TargetLanguage>CS</TargetLanguage>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <SqlServerVerification>False</SqlServerVerification>
+    <IncludeCompositeObjects>True</IncludeCompositeObjects>
+    <TargetDatabaseSet>True</TargetDatabaseSet>
+    <SccProjectName>SAK</SccProjectName>
+    <SccProvider>SAK</SccProvider>
+    <SccAuxPath>SAK</SccAuxPath>
+    <SccLocalPath>SAK</SccLocalPath>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <OutputPath>bin\Release\</OutputPath>
+    <BuildScriptName>$(MSBuildProjectName).sql</BuildScriptName>
+    <TreatWarningsAsErrors>False</TreatWarningsAsErrors>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <DefineDebug>false</DefineDebug>
+    <DefineTrace>true</DefineTrace>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <OutputPath>bin\Debug\</OutputPath>
+    <BuildScriptName>$(MSBuildProjectName).sql</BuildScriptName>
+    <TreatWarningsAsErrors>false</TreatWarningsAsErrors>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <DefineDebug>true</DefineDebug>
+    <DefineTrace>true</DefineTrace>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup>
+    <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">11.0</VisualStudioVersion>
+    <!-- Default to the v11.0 targets path if the targets file for the current VS version is not found -->
+    <SSDTExists Condition="Exists('$(MSBuildExtensionsPath)\Microsoft\VisualStudio\v$(VisualStudioVersion)\SSDT\Microsoft.Data.Tools.Schema.SqlTasks.targets')">True</SSDTExists>
+    <VisualStudioVersion Condition="'$(SSDTExists)' == ''">11.0</VisualStudioVersion>
+  </PropertyGroup>
+  <Import Condition="'$(SQLDBExtensionsRefPath)' != ''" Project="$(SQLDBExtensionsRefPath)\Microsoft.Data.Tools.Schema.SqlTasks.targets" />
+  <Import Condition="'$(SQLDBExtensionsRefPath)' == ''" Project="$(MSBuildExtensionsPath)\Microsoft\VisualStudio\v$(VisualStudioVersion)\SSDT\Microsoft.Data.Tools.Schema.SqlTasks.targets" />
+  <ItemGroup>
+    <Folder Include="Properties" />
+    <Folder Include="UM\" />
+    <Folder Include="UM\Tables\" />
+    <Folder Include="AT\" />
+    <Folder Include="AT\Tables\" />
+    <Folder Include="UM\Views\" />
+    <Folder Include="UM\Stored Procedures\" />
+    <Folder Include="AT\Stored Procedures\" />
+    <Folder Include="Security\" />
+    <Folder Include="Post deployment" />
+    <Folder Include="AS\" />
+    <Folder Include="AS\Tables\" />
+    <Folder Include="ACT\" />
+    <Folder Include="ACT\Tables\" />
+    <Folder Include="AS\Stored Procedures\" />
+    <Folder Include="HIST\" />
+    <Folder Include="HIST\Tables\" />
+    <Folder Include="HIST\Stored Procedures\" />
+    <Folder Include="AS\Functions\" />
+    <Folder Include="dbo\" />
+    <Folder Include="dbo\Tables\" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="SqlSchemaCompare.scmp" />
+    <None Include="Post deployment\Readme.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <Build Include="UM\Tables\SessionLogging.sql" />
+    <Build Include="UM\Tables\AccessControlItems.sql" />
+    <Build Include="UM\Tables\ComputerAccessControlLists.sql" />
+    <Build Include="UM\Tables\ComputerPropertyValues.sql" />
+    <Build Include="UM\Tables\Computers.sql" />
+    <Build Include="UM\Tables\GroupAccessControlLists.sql" />
+    <Build Include="UM\Tables\GroupPropertyValues.sql" />
+    <Build Include="UM\Tables\Groups.sql" />
+    <Build Include="UM\Tables\Properties.sql" />
+    <Build Include="UM\Tables\UserAccessControlLists.sql" />
+    <Build Include="UM\Tables\UserGroupLists.sql" />
+    <Build Include="UM\Tables\UserPropertyValues.sql" />
+    <Build Include="UM\Tables\Users.sql" />
+    <Build Include="AT\Tables\Languages.sql" />
+    <Build Include="AT\Tables\ApplicationTranslationsUpdatedOn.sql" />
+    <Build Include="AT\Tables\ApplicationTranslationsHistory.sql" />
+    <Build Include="AT\Tables\ApplicationTranslations.sql" />
+    <Build Include="UM\Views\ViewGroupPropertyValues.sql" />
+    <Build Include="UM\Views\ViewUserPropertyValues.sql" />
+    <Build Include="UM\Views\ViewComputerPropertyValues.sql" />
+    <Build Include="UM\Stored Procedures\Users_GetAll.sql" />
+    <Build Include="UM\Stored Procedures\AccessControlItems_Add.sql" />
+    <Build Include="UM\Stored Procedures\AccessControlItems_Delete.sql" />
+    <Build Include="UM\Stored Procedures\AccessControlItems_GetAll.sql" />
+    <Build Include="UM\Stored Procedures\ComputerAccessControlLists_Add.sql" />
+    <Build Include="UM\Stored Procedures\ComputerAccessControlLists_Delete.sql" />
+    <Build Include="UM\Stored Procedures\ComputerAccessControlLists_GetAll.sql" />
+    <Build Include="UM\Stored Procedures\ComputerPropertyValuesGennie_Add.sql" />
+    <Build Include="UM\Stored Procedures\ComputerPropertyValuesGennie_Delete.sql" />
+    <Build Include="UM\Stored Procedures\ComputerPropertyValuesGennie_GetById.sql" />
+    <Build Include="UM\Stored Procedures\ComputerPropertyValuesGennie_Modify.sql" />
+    <Build Include="UM\Stored Procedures\Computers_Add.sql" />
+    <Build Include="UM\Stored Procedures\Computers_Delete.sql" />
+    <Build Include="UM\Stored Procedures\Computers_GetAll.sql" />
+    <Build Include="UM\Stored Procedures\Computers_GetByHostName.sql" />
+    <Build Include="UM\Stored Procedures\Computers_Modify.sql" />
+    <Build Include="UM\Stored Procedures\GroupAccessControlLists_Add.sql" />
+    <Build Include="UM\Stored Procedures\GroupAccessControlLists_Delete.sql" />
+    <Build Include="UM\Stored Procedures\GroupAccessControlLists_GetAll.sql" />
+    <Build Include="UM\Stored Procedures\GroupPropertyValuesGennie_Add.sql" />
+    <Build Include="UM\Stored Procedures\GroupPropertyValuesGennie_Delete.sql" />
+    <Build Include="UM\Stored Procedures\GroupPropertyValuesGennie_GetById.sql" />
+    <Build Include="UM\Stored Procedures\UserGroupLists_GetByGroupId.sql" />
+    <Build Include="UM\Stored Procedures\UserGroupLists_GetById.sql" />
+    <Build Include="UM\Stored Procedures\UserGroupLists_GetByUserId.sql" />
+    <Build Include="UM\Stored Procedures\SessionLogging_GetById.sql" />
+    <Build Include="UM\Stored Procedures\SessionLogging_Modify.sql" />
+    <Build Include="UM\Stored Procedures\SessionLogging_Add.sql" />
+    <Build Include="UM\Stored Procedures\SessionLogging_ModifyTime.sql" />
+    <Build Include="UM\Stored Procedures\Users_GetByUsername.sql" />
+    <Build Include="UM\Stored Procedures\Users_Modify.sql" />
+    <Build Include="UM\Stored Procedures\ViewComputerPropertyValues_GetByComputer.sql" />
+    <Build Include="UM\Stored Procedures\ViewComputerPropertyValues_GetByPropertyAndComputer.sql" />
+    <Build Include="UM\Stored Procedures\ViewGroupPropertyValues_GetByGroup.sql" />
+    <Build Include="UM\Stored Procedures\ViewGroupPropertyValues_GetByProperty.sql" />
+    <Build Include="UM\Stored Procedures\ViewGroupPropertyValues_GetByPropertyAndGroup.sql" />
+    <Build Include="UM\Stored Procedures\ViewUserPropertyValues_GetByPropertyAndUser.sql" />
+    <Build Include="UM\Stored Procedures\ViewUserPropertyValues_GetByUser.sql" />
+    <Build Include="UM\Stored Procedures\GroupPropertyValuesGennie_Modify.sql" />
+    <Build Include="UM\Stored Procedures\Groups_Add.sql" />
+    <Build Include="UM\Stored Procedures\Groups_Delete.sql" />
+    <Build Include="UM\Stored Procedures\Groups_GetAll.sql" />
+    <Build Include="UM\Stored Procedures\Groups_GetById.sql" />
+    <Build Include="UM\Stored Procedures\Groups_GetByUserId.sql" />
+    <Build Include="UM\Stored Procedures\Groups_Modify.sql" />
+    <Build Include="UM\Stored Procedures\GroupsGennie_GetAll.sql" />
+    <Build Include="UM\Stored Procedures\PropertiesGennie_GetAll.sql" />
+    <Build Include="UM\Stored Procedures\PropertiesGennie_GetById.sql" />
+    <Build Include="UM\Stored Procedures\UserAccessControlLists_Add.sql" />
+    <Build Include="UM\Stored Procedures\UserAccessControlLists_Delete.sql" />
+    <Build Include="UM\Stored Procedures\UserAccessControlLists_GetAll.sql" />
+    <Build Include="UM\Stored Procedures\UserGroupLists_Add.sql" />
+    <Build Include="UM\Stored Procedures\UserGroupLists_Delete.sql" />
+    <Build Include="UM\Stored Procedures\UserGroupLists_GetAll.sql" />
+    <Build Include="UM\Stored Procedures\UserPropertyValuesGennie_Add.sql" />
+    <Build Include="UM\Stored Procedures\UserPropertyValuesGennie_Delete.sql" />
+    <Build Include="UM\Stored Procedures\UserPropertyValuesGennie_GetById.sql" />
+    <Build Include="UM\Stored Procedures\UserPropertyValuesGennie_Modify.sql" />
+    <Build Include="UM\Stored Procedures\Users_Add.sql" />
+    <Build Include="AT\Stored Procedures\ApplicationTranslations_GetNewOrModifiedSince.sql" />
+    <Build Include="AT\Stored Procedures\ApplicationTranslations_GetDeletedSince.sql" />
+    <Build Include="AT\Stored Procedures\Languages_Modify.sql" />
+    <Build Include="AT\Stored Procedures\Languages_GetById.sql" />
+    <Build Include="AT\Stored Procedures\Languages_GetAll.sql" />
+    <Build Include="AT\Stored Procedures\Languages_Delete.sql" />
+    <Build Include="AT\Stored Procedures\Languages_Add.sql" />
+    <Build Include="AT\Stored Procedures\ApplicationTranslationsGennie_Modify.sql" />
+    <Build Include="AT\Stored Procedures\ApplicationTranslationsGennie_GetByLanguageId.sql" />
+    <Build Include="AT\Stored Procedures\ApplicationTranslationsGennie_GetById.sql" />
+    <Build Include="AT\Stored Procedures\ApplicationTranslationsGennie_GetAll.sql" />
+    <Build Include="AT\Stored Procedures\ApplicationTranslationsGennie_Delete.sql" />
+    <Build Include="AT\Stored Procedures\ApplicationTranslationsGennie_Add.sql" />
+    <Build Include="AT\Stored Procedures\ApplicationTranslations_Translate.sql" />
+    <Build Include="AT\Stored Procedures\ApplicationTranslations_GetNonTranslatedMessagesByLanguageId.sql" />
+    <Build Include="AT\Stored Procedures\ApplicationTranslations_GetMaxUpdatedOn.sql" />
+    <Build Include="AT\Stored Procedures\ApplicationTranslations_GetAllUniqueKeys.sql" />
+    <Build Include="AT\Stored Procedures\ApplicationTranslations_DeleteByLanguageId.sql" />
+    <Build Include="AT\Stored Procedures\ApplicationTranslations_GetByKeyAndLanguageId.sql" />
+    <Build Include="Security\UM.sql" />
+    <Build Include="Security\AT.sql" />
+    <None Include="Post deployment\DataTypes.sql" />
+    <None Include="Post deployment\UMProperties.sql" />
+    <Build Include="AS\Tables\ApplicationSettings.sql" />
+    <Build Include="ACT\Tables\DataTypes.sql" />
+    <Build Include="Security\AS.sql" />
+    <Build Include="Security\ACT.sql" />
+    <None Include="Post deployment\ApplicationSettings.sql" />
+    <Build Include="AS\Tables\ApplicationSettingsCategories.sql" />
+    <Build Include="AS\Stored Procedures\ApplicationSettingsGennie_Modify.sql" />
+    <Build Include="AS\Stored Procedures\ApplicationSettingsGennie_GetById.sql" />
+    <Build Include="AS\Stored Procedures\ApplicationSettingsGennie_GetByDataTypeId.sql" />
+    <Build Include="AS\Stored Procedures\ApplicationSettingsGennie_GetAll.sql" />
+    <Build Include="AS\Stored Procedures\ApplicationSettingsGennie_Delete.sql" />
+    <Build Include="AS\Stored Procedures\ApplicationSettingsGennie_Add.sql" />
+    <None Include="Post deployment\NameAbbreviationStyles.sql" />
+    <Build Include="ACT\Tables\NameAbbreviationStyle.sql" />
+    <Build Include="AS\Stored Procedures\ApplicationSettingsGennie_GetByApplicationSettingsCategoryId.sql" />
+    <Build Include="AS\Stored Procedures\ApplicationSettingsCategoriesGennie_Modify.sql" />
+    <Build Include="AS\Stored Procedures\ApplicationSettingsCategoriesGennie_GetById.sql" />
+    <Build Include="AS\Stored Procedures\ApplicationSettingsCategoriesGennie_GetAll.sql" />
+    <Build Include="AS\Stored Procedures\ApplicationSettingsCategoriesGennie_Delete.sql" />
+    <Build Include="AS\Stored Procedures\ApplicationSettingsCategoriesGennie_Add.sql" />
+    <Build Include="HIST\Tables\HistoryActions.sql" />
+    <Build Include="HIST\Tables\HistoryKeys.sql" />
+    <Build Include="HIST\Stored Procedures\HistoryActionsGennie_GetByComputerId.sql" />
+    <Build Include="HIST\Stored Procedures\HistoryActionsGennie_GetByUserId.sql" />
+    <Build Include="HIST\Stored Procedures\HistoryActionsGennie_GetByHistoryKey.sql" />
+    <Build Include="HIST\Stored Procedures\HistoryActionsGennie_GetById.sql" />
+    <Build Include="HIST\Stored Procedures\HistoryActionsGennie_GetAll.sql" />
+    <Build Include="HIST\Stored Procedures\HistoryActionsGennie_Modify.sql" />
+    <Build Include="HIST\Stored Procedures\HistoryActionsGennie_Delete.sql" />
+    <Build Include="HIST\Stored Procedures\HistoryActionsGennie_Add.sql" />
+    <Build Include="HIST\Stored Procedures\HistoryKeysGennie_GetById.sql" />
+    <Build Include="HIST\Stored Procedures\HistoryKeysGennie_GetAll.sql" />
+    <Build Include="HIST\Stored Procedures\HistoryKeysGennie_Modify.sql" />
+    <Build Include="HIST\Stored Procedures\HistoryKeysGennie_Delete.sql" />
+    <Build Include="HIST\Stored Procedures\HistoryKeysGennie_Add.sql" />
+    <Build Include="Security\HIST.sql" />
+    <None Include="Post deployment\Init languages.sql" />
+    <Build Include="AS\Tables\DataSources.sql" />
+    <Build Include="AS\Functions\CheckListConstraint.sql" />
+    <Build Include="AS\Stored Procedures\DataSourcesGennie_Modify.sql" />
+    <Build Include="AS\Stored Procedures\DataSourcesGennie_GetById.sql" />
+    <Build Include="AS\Stored Procedures\DataSourcesGennie_GetAll.sql" />
+    <Build Include="AS\Stored Procedures\DataSourcesGennie_Delete.sql" />
+    <Build Include="AS\Stored Procedures\DataSourcesGennie_Add.sql" />
+    <Build Include="AS\Stored Procedures\DataSources_GetListById.sql" />
+    <Build Include="AS\Stored Procedures\ApplicationSettingsGennie_GetByListId.sql" />
+    <Build Include="dbo\Tables\Resources.sql" />
+    <Build Include="dbo\Tables\Orders.sql" />
+    <Build Include="dbo\Tables\OrderMessages.sql" />
+    <Build Include="dbo\Tables\Materials.sql" />
+    <Build Include="dbo\Tables\MaterialParameterValues.sql" />
+    <Build Include="dbo\Tables\MaterialParameters.sql" />
+    <Build Include="dbo\Tables\MaterialGroups.sql" />
+    <Build Include="dbo\Tables\BomItems.sql" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Post deployment\InitActemiumDefaultPassword.sql" />
+  </ItemGroup>
+</Project>

@@ -1,0 +1,55 @@
+﻿<#@ template debug="false" hostspecific="true" language="C#" #>
+<#@ assembly name="System.Data" #><#@ import namespace="System.Data" #>
+<#@ import namespace="System.Data.SqlClient" #>
+<#+
+string GenerateEnum(string enumName, string enumIdField, string enumCodeField, string enumDescriptionField, string tableName)
+{
+	try
+	{
+		string connectionString = @"Data Source=arches\mssql2016;Initial Catalog=ActemiumL3IC.OrderManager;Persist Security Info=True;User ID=sa;Password=muim3tc@";
+		SqlConnection sqlConn = new SqlConnection(connectionString);
+		sqlConn.Open();  
+		string sql = string.Format("SELECT {0}, {1} {2} FROM {3} ORDER BY {0}", enumIdField, enumCodeField, enumDescriptionField != null ? ", " + enumDescriptionField : "" , tableName);  
+  
+		SqlCommand sqlComm = new SqlCommand(sql, sqlConn);  
+				 
+		IDataReader reader = sqlComm.ExecuteReader();  
+				
+		System.Text.StringBuilder sb = new System.Text.StringBuilder();
+				 
+		sb.AppendLine("namespace Actemium.L3IC.OrderManager.Model.Enums");
+		sb.AppendLine("{");  
+		sb.AppendLine(string.Format("\tpublic enum {0}", enumName));
+		sb.AppendLine("\t{");
+		bool append = false;
+		while (reader.Read())  
+		{  
+			if (append)
+			{
+				sb.Append("," + Environment.NewLine);
+			}
+			append = true;
+			if (enumDescriptionField != null)
+			{
+				sb.AppendLine("\t\t/// <summary>");
+				sb.AppendLine("\t\t/// " + reader[enumDescriptionField]);
+				sb.AppendLine("\t\t/// </summary>");
+			}
+			sb.Append(string.Format("\t\t{0} = {1}", reader[enumCodeField].ToString().Replace(" ", "_").Replace("(", "").Replace(")", "").Replace("/", ""), reader[enumIdField]));  
+		}  
+
+		reader.Close();  
+
+		sqlComm.Dispose();  
+		sb.AppendLine();
+		sb.AppendLine("\t}");
+		sb.AppendLine("}");
+				 	
+		return sb.ToString();
+	}
+	catch (Exception ex)
+	{
+		return ex.Message;
+	}
+}
+#>
